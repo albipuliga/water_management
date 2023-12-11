@@ -1,0 +1,21 @@
+{% block content %}
+
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <form method="POST" style="background-color: #f2f2f2; padding: 20px; border-radius: 5px;">
+        {% csrf_token %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <div style="margin-bottom: 10px;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        </div> 
+        <div style="margin-bottom: 10px;">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;">Login</button>
+    </form>
+</div>
+
+{% endblock %}

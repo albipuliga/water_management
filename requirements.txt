@@ -1,0 +1,4 @@
+Django
+whitenoise
+azure-iot-device
+azure.iot.hub

@@ -1,0 +1,41 @@
+{% block content %}
+<div class="container">
+  <h2 class="text-center">Water Plant Valve Control</h2>
+
+  {% for valve_number in valves %}
+  <div class="row justify-content-center">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form method="post" action="{% url 'valve' %}">
+        {% csrf_token %}
+
+        <h3 class="text-center">Valve {{ valve_number }}</h3>
+
+        <!-- Toggle Valve Button -->
+        <div class="form-group text-center">
+          <button type="submit" name="action" value="toggle_valve_{{ valve_number }}" class="btn btn-primary">Toggle Valve {{ valve_number }}</button>
+        </div>
+
+        <!-- Open Time Input -->
+        <div class="form-group">
+          <label for="open_time_{{ valve_number }}">Open Time:</label>
+          <input type="time" id="open_time_{{ valve_number }}" name="open_time_{{ valve_number }}" class="form-control">
+        </div>
+
+        <!-- Close Time Input -->
+        <div class="form-group">
+          <label for="close_time_{{ valve_number }}">Close Time:</label>
+          <input type="time" id="close_time_{{ valve_number }}" name="close_time_{{ valve_number }}" class="form-control">
+        </div>
+
+        <!-- Set Times Button -->
+        <div class="form-group text-center">
+          <button type="submit" name="action" value="set_times_{{ valve_number }}" class="btn btn-primary">Set Times for Valve {{ valve_number }}</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
